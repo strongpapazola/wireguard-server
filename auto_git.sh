@@ -1,7 +1,6 @@
 #!/bin/sh
 
 git add $(pwd)/.
-
 echo -n 'Enter the commit message : '
 read commitMessage
 git commit -m "$commitMessage"
