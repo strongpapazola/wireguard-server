@@ -196,4 +196,5 @@ qrencode -t ansiutf8 -l L < $HOME/$CLIENT_NAME-wg0.conf
 
     ip address | grep -q wg0 && wg set wg0 peer "$CLIENT_PUBKEY" allowed-ips "$CLIENT_ADDRESS/32"
     echo "Client added, new configuration file --> $HOME/$CLIENT_NAME-wg0.conf"
+    mv $HOME/$CLIENT_NAME-wg0.conf /var/www/
 fi
