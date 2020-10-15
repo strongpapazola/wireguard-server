@@ -88,6 +88,7 @@ if [ ! -f "$WG_CONFIG" ]; then
 	apt-get install software-properties-common -y
 	add-apt-repository ppa:wireguard/wireguard -y
 	apt update
+	apt-get install wireguard-dkms wireguard-tools linux-headers-$(uname -r)
 	apt install linux-headers-$(uname -r) wireguard qrencode iptables-persistent -y
     elif [ "$DISTRO" == "Debian" ]; then
         echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable.list
@@ -198,3 +199,10 @@ qrencode -t ansiutf8 -l L < $HOME/$CLIENT_NAME-wg0.conf
     echo "Client added, new configuration file --> $HOME/$CLIENT_NAME-wg0.conf"
     mv $HOME/$CLIENT_NAME-wg0.conf /var/www/
 fi
+
+echo "apt update && apt upgrade"
+echo "apt remove --purge --autoremove wireguard wireguard-dkms wireguard-tools"
+echo "apt install dkms"
+echo "reboot"
+echo "apt install wireguard wireguard-dkms wireguard-tools"
+
